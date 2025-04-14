@@ -60,7 +60,12 @@ def check_setup():
         exit(1)
 
     midi_dir = Path(config["midi_dir"])
+
+    print(f"Checking MIDI dir: '{midi_dir}'")
+    print("Exists?", os.path.exists(midi_dir))
+    print("Is dir?", os.path.isdir(midi_dir))
     print(f"🔍 Looking for MIDI files in: {midi_dir}")
+    print(f"🔍 Searching ALL subdirectories recursively for *.[mM][iI][dD] files...")
 
     if not midi_dir.exists():
         print(f"❌ Error: MIDI directory not found at {midi_dir}")
@@ -68,7 +73,7 @@ def check_setup():
 
     print("🔍 Searching for MIDI files...")
     vgm_dirs = list(midi_dir.glob("VGM - *"))
-    midi_files = []
+    midi_files = list(midi_dir.rglob("*.[mM][iI][dD]"))
     if vgm_dirs:
         print(f"📂 Found {len(vgm_dirs)} VGM directories.")
         for vgm_dir in vgm_dirs:
@@ -80,10 +85,10 @@ def check_setup():
 
 
     if not midi_files:
-        print(f"❌ Error: No MIDI files found in {midi_dir} or its subdirectories")
+        print(f"❌ Error: No MIDI files found matching '*.[mM][iI][dD]' in {midi_dir} or its subdirectories")
         exit(1)
 
-    print(f"✅ Found {len(midi_files)} total MIDI files")
+    print(f"✅ Found {len(midi_files)} total MIDI files matching pattern.")
     random.shuffle(midi_files) # Shuffle here once
     print(" Playlist shuffled.")
     return midi_dir, config, midi_files

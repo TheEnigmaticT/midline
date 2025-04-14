@@ -1,5 +1,6 @@
 {
     "IGDB_CLIENT_ID": "u572rnhyf0r259456a0w53uhok9izv",
     "IGDB_ACCESS_TOKEN": "j1aao5ye7ncbve01h86bdbb8a401ox",
-    "MIDI_DIR": "/media/tlongino/Rocinante/Music/video-game-music-90000-midi-files"
+    "MIDI_DIR": "/media/tlongino/Rocinante/Music/video-game-music-90000-midi-files/",
+    "GEMINI_API_KEY": "AIzaSyDVBMbQphDmHH56rPDqcUbjUjbmMmZxeDw"
 }
